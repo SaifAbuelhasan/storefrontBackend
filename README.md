@@ -4,6 +4,20 @@
 
 Run `npm i` to install dependencies.
 
+## Database Setup
+
+**Port -> 5423**
+
+**Host -> 127.0.0.1**
+
+**Driver -> Postgres**
+
+- Create database user for project
+
+- Create a dev and test databases
+
+- Grant all priviledges on databases to user
+
 ## Required Technologies
 
 Your application must make use of the following libraries:
@@ -55,35 +69,3 @@ Add JWT functionality as shown in the course. Make sure that JWTs are required f
 Before submitting, make sure that your project is complete with a `README.md`. Your `README.md` must include instructions for setting up and running your project including how you setup, run, and connect to your database.
 
 Before submitting your project, spin it up and test each endpoint. If each one responds with data that matches the data shapes from the `REQUIREMENTS.md`, it is ready for submission!
-
-## How to setup the database
-
-**Database Server Port -> 5423**
-
-**Database Server Host -> 127.0.0.1**
-
-**Database Driver Postgres**
-
-1.  Create database user
-
-        CREATE USER shopping_user WITH PASSWORD 'password123';
-
-2.  Create a dev and test databases
-
-    a. Create dev database
-
-        CREATE DATABASE shopping;
-
-    b. Create test database
-
-        CREATE DATABASE shopping_test;
-
-3.  Grant privileges for the created user to the databases
-
-        GRANT ALL PRIVILEGES ON DATABASE shopping TO shopping_user;
-
-        GRANT ALL PRIVILEGES ON DATABASE shopping_test TO shopping_user;
-
-4.  Migrate the dev database to add the tables
-
-        db-migrate up
