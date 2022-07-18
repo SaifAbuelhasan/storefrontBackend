@@ -4,9 +4,7 @@ import express, { Request, Response } from "express";
 // index handler
 export const index = async (req: Request, res: Response) => {
   try {
-    console.log("Getting products from database");
     const products = await ProductModel.index();
-    console.log(products);
     res.status(200).json(products);
   } catch (error) {
     const e = error as Error;

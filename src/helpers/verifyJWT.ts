@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { verify, JwtPayload, sign } from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 

@@ -25,7 +25,7 @@ describe("UserModel Tests", () => {
   });
   // testing get()
   it("should return a user", async () => {
-    const user1 = await UserModel.get(1);
+    const user1 = await UserModel.get(user.id as number);
     expect(user1).toEqual(user);
   });
 });
