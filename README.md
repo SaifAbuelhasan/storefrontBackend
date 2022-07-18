@@ -2,7 +2,35 @@
 
 ## Getting Started
 
-Run `npm i` to install dependencies.
+**Install packages**
+
+    npm i
+
+**Run eslinter**
+
+    npm run lint
+
+**Run prettier**
+
+    npm run prettier
+
+**Run Test**
+
+    npm run test
+
+## Environment Variables
+
+**Add these variables to the .env file**
+POSTGRES_HOST
+POSTGRES_PORT
+POSTGRES_USER
+POSTGRES_PASSWORD
+POSTGRES_DB
+POSTGRES_DB_TEST
+ENV
+PEPPER
+SALT_ROUNDS
+TOKEN_SECRET
 
 ## Database Setup
 

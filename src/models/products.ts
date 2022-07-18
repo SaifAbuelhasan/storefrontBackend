@@ -10,8 +10,11 @@ export type Product = {
 
 // product model
 export class ProductModel {
-  // index of the products in the database
-  async index(): Promise<Product[]> {
+  /**
+   * Get all products from database
+   * @returns {Promise<Product[]>} array of all products
+   */
+  static async index(): Promise<Product[]> {
     try {
       const connection = await client.connect();
       const sql = "SELECT * FROM products";
@@ -23,8 +26,12 @@ export class ProductModel {
     }
   }
 
-  // get a product by id
-  async get(id: number): Promise<Product> {
+  /**
+   * Get product by id from database
+   * @param id product id
+   * @returns {Promise<Product>} product object
+   */
+  static async get(id: number): Promise<Product> {
     try {
       const connection = await client.connect();
       const sql = "SELECT * FROM products WHERE id = $1";
@@ -38,8 +45,12 @@ export class ProductModel {
     }
   }
 
-  // create a new product in the database
-  async create(product: Product): Promise<Product> {
+  /**
+   * Add new product to database
+   * @param product Product object
+   * @returns {Promise<Product>} created product object
+   */
+  static async create(product: Product): Promise<Product> {
     try {
       const connection = await client.connect();
       const sql =
