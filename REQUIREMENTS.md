@@ -23,7 +23,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Orders
 
-- Current Order by user (args: user id)[token required] `/orders/current-order/:user-id` [GET]
+- Current Order by user (args: user id)[token required] `/orders/current-order` [GET]
 - Create [token required] `/orders` [POST]
 - Create order product [token required] `/orders/:id/products` [POST]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required] `/orders/completed-orders/:user-id` [GET]

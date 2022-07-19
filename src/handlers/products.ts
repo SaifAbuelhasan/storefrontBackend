@@ -1,11 +1,23 @@
 import { ProductModel } from "../models/products";
 import express, { Request, Response } from "express";
+import { verifyAuthToken } from "../helpers/verifyJWT";
 
 // index handler
 export const index = async (req: Request, res: Response) => {
   try {
     const products = await ProductModel.index();
     res.status(200).json(products);
+  } catch (error) {
+    const e = error as Error;
+    res.status(500).json({ message: e.message });
+  }
+};
+
+// create handler
+export const create = async (req: Request, res: Response) => {
+  try {
+    const product = await ProductModel.create(req.body);
+    res.status(201).json(product);
   } catch (error) {
     const e = error as Error;
     res.status(500).json({ message: e.message });
@@ -29,6 +41,7 @@ export const show = async (req: Request, res: Response) => {
  */
 const product_routes = (app: express.Application) => {
   app.route("/api/products").get(index);
+  app.route("/api/products").post(verifyAuthToken, create);
   app.route("/api/products/:id").get(show);
 };
 

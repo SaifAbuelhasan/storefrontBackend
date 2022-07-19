@@ -15,7 +15,7 @@ describe("ProductModel Tests", () => {
       category: "Test Category",
     });
 
-    const product2 = await ProductModel.get(1);
+    const product2 = await ProductModel.get(product1.id as number);
 
     expect(product1).toEqual(product2);
   });
