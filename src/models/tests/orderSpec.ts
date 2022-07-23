@@ -31,19 +31,13 @@ describe("OrderModel Tests", () => {
   // testing getUserOrders()
   it("should return an array of orders", async () => {
     const orders = await OrderModel.getUserOrders(user.id as number);
-    expect(orders).toContain(order);
+    expect(orders).toContain({ ...order, orderProducts: [] });
   });
 
   // testing getCurrentOrder()
   it("should return user's current oder", async () => {
     const order1 = await OrderModel.getActiveOrder(user.id as number);
-    expect(order1).toEqual(order);
-  });
-
-  // testing orderCompleted()
-  it("should return completed order", async () => {
-    const order1 = await OrderModel.orderCompleted(order.id as number);
-    expect(order1.status).toEqual("completed");
+    expect(order1).toEqual({ orderProducts: [], ...order });
   });
 
   // testing createOrderProduct()
@@ -51,6 +45,7 @@ describe("OrderModel Tests", () => {
     const orderProduct = await OrderModel.addProduct(
       order.id as number,
       3,
+      user.id as number,
       product.id as number
     );
     expect(orderProduct).toBeDefined();

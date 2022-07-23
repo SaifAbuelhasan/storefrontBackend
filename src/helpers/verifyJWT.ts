@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { verify } from "jsonwebtoken";
+import { JwtPayload, verify } from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -18,7 +18,7 @@ export const verifyAuthToken = (req: Request, res: Response, next: any) => {
   }
 
   try {
-    verify(token, tokenSecret);
+    req.userId = (verify(token, tokenSecret) as JwtPayload).id;
     next();
   } catch (error) {
     return res.status(401).json({ error: "Invalid token" });
