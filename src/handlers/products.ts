@@ -35,6 +35,28 @@ export const show = async (req: Request, res: Response) => {
   }
 };
 
+// get top 5 handler
+export const top5 = async (req: Request, res: Response) => {
+  try {
+    const products = await ProductModel.getTop5();
+    res.status(200).json(products);
+  } catch (error) {
+    const e = error as Error;
+    res.status(500).json({ message: e.message });
+  }
+};
+
+// get products by category handler
+export const getByCategory = async (req: Request, res: Response) => {
+  try {
+    const products = await ProductModel.getByCategory(req.params.category);
+    res.status(200).json(products);
+  } catch (error) {
+    const e = error as Error;
+    res.status(500).json({ message: e.message });
+  }
+};
+
 /**
  * creates products endpoints for the app
  * @param app express app
@@ -43,6 +65,8 @@ const product_routes = (app: express.Application) => {
   app.route("/api/products").get(index);
   app.route("/api/products").post(verifyAuthToken, create);
   app.route("/api/products/:id").get(show);
+  app.route("/api/products/top5").get(top5);
+  app.route("/api/products/:category").get(getByCategory);
 };
 
 export default product_routes;

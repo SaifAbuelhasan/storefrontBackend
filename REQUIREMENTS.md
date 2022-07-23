@@ -11,8 +11,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Index `/products` [GET]
 - Show `/products/:id` [GET]
 - Create [token required] `/products` [POST]
-- [OPTIONAL] Top 5 most popular products `/products/top-5`
-- [OPTIONAL] Products by category (args: product category) `/products/category/:category`
+- [OPTIONAL] Top 5 most popular products `/products/top5`
+- [OPTIONAL] Products by category (args: product category) `/products/:category`
 
 #### Users
 
